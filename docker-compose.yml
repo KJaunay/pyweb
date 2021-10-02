@@ -1,8 +1,15 @@
-version: '3'
+version: '3.8'
 services: 
   web:
     build: .
+    depends_on:
+      - mongo
     ports:
       - "80:5000"
     volumes:
       - .:/app
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
